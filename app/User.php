@@ -36,9 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function isAdmin(){
-        $lv=$this->level;
-        return $lv;
-    }    
+    
+    /*
+        call: Auth::user()->level;
+    */
+    public function level() {
+        return $this->level;
+    }
 }
