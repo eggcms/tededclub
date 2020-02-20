@@ -13,10 +13,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         \App\User::insert([
-            'name' => 'Admin Admin',
-            'email' => 'admin@material.com',
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('admin@admin.com'),
             'line' => '',
             'facebook' => '',
             'avatar' => '',
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('z'.$i.'@z'.$i.'.com'),
                 'line' => '',
                 'facebook' => '',
-                'avatar' => '',                
+                'avatar' => 'z'.$i.'.gif',                
                 'level' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -53,7 +53,7 @@ main {
             a { 
                 text-decoration: none; color: rgb(175, 175, 175); margin: 0; 
                 &:hover{ color: #fff; }
-                img { height: 100px; object-fit: cover; }
+                img { height: auto;  }
                 p { margin: 0; overflow:hidden; height:58px; }
             }
             span { font-size: 10px; color: rgb(175, 175, 175); }

@@ -38,7 +38,6 @@ class UserController extends Controller
     public function store(UserRequest $request, User $model)
     {
         $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
@@ -71,18 +70,14 @@ class UserController extends Controller
         $user->facebook=$request->input('facebook');
 
         if($request->hasFile('avatar')) $fileNameToStore=uploadImage($request->file('avatar'),'avatar');
-        else $fileNameToStore='';
+        $fileNameToStore='';
 
 //        if ($fileNameToStore) $user->avatar=$fileNameToStore;
 
         if (isset($fileNameToStore)) {
             if (!empty($user->avatar)) {
-                // $cover_path  = str_replace('/','\\',public_path('avatar/'.$user->avatar));
-                // if (file_exists($cover_path)) { unlink($cover_path); }
-
                 $cover_path = public_path().'/avatar/'.$user->avatar;
                 if (is_file($cover_path)) { unlink($cover_path); }      
-
                 $user->avatar = $fileNameToStore;           
             }
             else $user->avatar = $fileNameToStore;

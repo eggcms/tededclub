@@ -205,53 +205,47 @@
 <div id="zeantded">
     <div class="container bg-black">
         <div class="row">
+
             @foreach($tstepsx as $ts)
             <div class="col-12 col-lg-3 py-2">
                 <div class="img-tded">
-                    @if($ts['avatar'])
-                    <a href="#lineID"><img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid"></a>
+                    @if($ts['avatar'] != '')
+                        @if($ts['line'] != '')
+                            <a href="$ts['line']"><img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid"></a>
+                        @else
+                            <img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid">
+                        @endif
+
                     @else
-                    <a href="#lineID"><img src="/images/balltor12.gif" class="img-fluid"></a>
+                        <img src="/images/balltor12.gif" class="img-fluid">
                     @endif
                 </div>
                 <div class="tdedstep">
-                <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">
-                    {{$ts['team1']}}
-                </p></div>
-                    <div class="py-2 bg-grey"><p><img class="img-1" src="/images/ball.gif" alt="">{{$ts['team2']}}</p></div>
-                    <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">{{$ts['team3']}}</p></div>
+                <div class="py-2">
+                    @if($ts['team1'] != '')
+                        <p><img class="img-1" src="/images/ball.gif" alt=""><span style="color:{{$ts['team1w']}}">{{$ts['team1']}} xxx</span></p>
+                    @else
+                        <p class="py-1">&nbsp;</p>
+                    @endif
+                </div>
+                    <div class="py-2 bg-grey">
+                        @if($ts['team2'] != '')
+                            <p><img class="img-1" src="/images/ball.gif" alt=""><span style="color:{{$ts['team2w']}}">{{$ts['team2']}}</span></p>
+                        @else
+                            <p class="py-1">&nbsp;</p>
+                        @endif           
+                    </div>
+                    <div class="py-2">
+                        @if($ts['team3'] != '')
+                            <p><img class="img-1" src="/images/ball.gif" alt=""><span style="color:{{$ts['team3w']}}">{{$ts['team3']}}</span></p>
+                        @else
+                            <p class="py-1">&nbsp;</p>
+                        @endif
+                        
+                    </div>
                 </div>
             </div>
             @endforeach 
-            {{-- @foreach($tsteps as $ts)
-            <div class="col-12 col-lg-3 py-2">
-                <div class="img-tded">
-                    <img src="/images/balltor12.gif" class="img-fluid" alt="">
-                </div>
-                <div class="tdedstep">
-                <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">
-                    {{$ts[0]['team1']}}
-
-                </p></div>
-                    <div class="py-2 bg-grey"><p><img class="img-1" src="/images/ball.gif" alt="">{{$ts[0]['team2']}}</p></div>
-                    <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">{{$ts[0]['team3']}}</p></div>
-                </div>
-            </div>
-            @endforeach --}}
-            {{-- @if (8 > count($tsteps))
-                @for ($i = 0; $i < (8 - count($tsteps)); $i++)
-                <div class="col-12 col-lg-3 py-2">
-                    <div class="img-tded">
-                        <img src="/images/balltor12.gif" class="img-fluid" alt="">
-                    </div>
-                    <div class="tdedstep">
-                        <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">&nbsp;</p></div>
-                        <div class="py-2 bg-grey"><p><img class="img-1" src="/images/ball.gif" alt="">&nbsp;</p></div>
-                        <div class="py-2"><p><img class="img-1" src="/images/ball.gif" alt="">&nbsp;</p></div>
-                    </div>
-                </div>   
-                @endfor
-            @endif --}}
         </div>
     </div>
 </div>
@@ -266,7 +260,12 @@
                     <div class="row">
                         <div class="col-8 col-lg-10"><h1>ทรรศนะบอลวันนี้</h1></div>
                         <div class="col-4 col-lg-2">
-                            {{-- <a href="/tded">ดูทั้งหมด</a> --}}
+                            <p>
+                                ทรรศนะบอล ทีเด็ดบอล บ้านผลบอล
+                                ทรรศนะบอลวันนี้ วิเคราะห์บอลวันนี้ ทรรศนะเซียนบอล ทีเด็ดบอล ทีเด็ดบอลรายวัน ทีเด็ดบอลวันนี้ บอลเต็ง บอลสเต็ป บ้านผลบอล
+                                ทีเด็ดบอลเต็ง ทีเด็ดบอลเดี่ยว วิเคราะห์บอลทุกคู่ วิเคราะห์บอลทุกลีก ทรรศนะเซียนบอลวันนี้ ทีเด็ดบอลวันนี้ แหล่งรวมเซียนบอล ผลบอล
+                                วิเคราะห์บอลสุดแม่น ราคาบอล ทีเด็ดฟุตบอล ทีเด็ดบอลวันนี้ โปรแกรมบอลวันนี้
+                            </p>
                         </div>
                     </div>
                 </div>

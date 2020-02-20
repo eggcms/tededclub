@@ -117,7 +117,6 @@ class AnalyzeController extends Controller
         return redirect('/analyze')->with('success','Success! Analyze id #'.$id.' has been updated.');
     }
 
-
     public function destroy($id)
     {
         $an = Analyze::find($id);

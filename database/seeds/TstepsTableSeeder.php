@@ -17,6 +17,9 @@ class TstepsTableSeeder extends Seeder
                 'team1' => 'AZ อัลค์ม่าร์ 2 รอง 0.25',
                 'team2' => 'พีเอสวี ไอนด์โฮเฟ่น รอง 0.25',
                 'team3' => 'ทรัวส์ รอง 0.25',
+                'team1w' => 0,
+                'team2w' => 1,
+                'team3w' => 0,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

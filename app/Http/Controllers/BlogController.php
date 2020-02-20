@@ -27,7 +27,6 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
         if(Blog::where('title', $request->input('title'))->first()) {
             return redirect()->back()->withInput()->with('error', 'Error! Title has data already exists.');
         }   
@@ -36,8 +35,8 @@ class BlogController extends Controller
             'description' => 'required',
             'image' => 'image|nullable|max:2084',
         ]);
-        if($request->hasFile('image')) $fileNameToStore=uploadImage($request->file('image'),'imgs');
-        else $fileNameToStore='';
+        if($request->hasFile('image')) { $fileNameToStore=uploadImage($request->file('image'),'imgs'); }
+        else { $fileNameToStore=''; }
 
         $bs = new Blog;
         $bs->uid = Auth::user()->id;
@@ -56,7 +55,6 @@ class BlogController extends Controller
         $bs->save();
         return redirect('/blogs')->with('success','Success! New Blog has been Created.');
     }
-
 
     public function show($id)
     {
@@ -94,7 +92,7 @@ class BlogController extends Controller
         $bs->visit = ($bs->visit == '')?0:$bs->visit;
         $bs->clip = ($request->input('clip')!=null) ? getYoutube($request->input('clip')):null;
         if (isset($fileNameToStore)) {
-            if (!empty($bs->image)) { // $cover_path  = str_replace('/','\\',public_path('imgs/'.$bs->image));
+            if (!empty($bs->image)) {
                 $cover_path = public_path().'/imgs/'.$bs->image;
                 if (is_file($cover_path)) { unlink($cover_path); }            
             }

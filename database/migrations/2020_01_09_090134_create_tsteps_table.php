@@ -19,6 +19,9 @@ class CreateTstepsTable extends Migration
             $table->string('team1');
             $table->string('team2');
             $table->string('team3');
+            $table->integer('team1w')->default(0);
+            $table->integer('team2w')->default(0);
+            $table->integer('team3w')->default(0);
             $table->timestamps();
         });
     }

@@ -52,6 +52,9 @@ class TstepController extends Controller
             $tstep->team1 = $request->input('team1');
             $tstep->team2 = $request->input('team2');
             $tstep->team3 = $request->input('team3');
+            $ts->team1w = $request->input('team1w');
+            $ts->team2w = $request->input('team2w');
+            $ts->team3w = $request->input('team3w');
         }
         else {
             $tstep = new Tstep;
@@ -59,6 +62,9 @@ class TstepController extends Controller
             $tstep->team1 = $request->input('team1');
             $tstep->team2 = $request->input('team2');
             $tstep->team3 = $request->input('team3');
+            $ts->team1w = $request->input('team1w');
+            $ts->team2w = $request->input('team2w');
+            $ts->team3w = $request->input('team3w');
         }
         $tstep->save();
         return redirect('/tstep')->with('success','Success! New TededStep has been Created.');
@@ -96,7 +102,7 @@ class TstepController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+//dd($request);
         $validatedData = $request->validate([
             'team1' => 'required',
             'team2' => 'required',
@@ -110,9 +116,11 @@ class TstepController extends Controller
         $ts->team1 = $request->input('team1');
         $ts->team2 = $request->input('team2');
         $ts->team3 = $request->input('team3');
+        $ts->team1w = $request->input('team1w');
+        $ts->team2w = $request->input('team2w');
+        $ts->team3w = $request->input('team3w');
         $ts->save();
         return redirect('/tstep')->with('success','Success! TededStep has been updated.');
-
     }
 
     /**

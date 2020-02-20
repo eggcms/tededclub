@@ -80,7 +80,6 @@
 									<a href="#" class="btn btn-success" id="addButton">เพิ่มทำนายผล</a>
 								</div>
 
-
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<thead class=" text-primary">

@@ -64,17 +64,96 @@
 								<form method="post" action="{{url('tstep/'.$tstep->id)}}" autocomplete="off" class="form-horizontal">
 									<div class="row">
 										<div class="col">
-@php $user = DB::table('users')->where('id',$tstep->uid)->first(); @endphp
-<h3>{{$user->name}}</h3>
-<input type="hidden" name="id" value="{{$tstep->id}}" />
+										@php $user = DB::table('users')->where('id',$tstep->uid)->first(); @endphp
+										<h3>{{$user->name}}</h3>
+										<img src="{{ url('avatar/'.$user->avatar) }}" />
+										<input type="hidden" name="id" value="{{$tstep->id}}" />
 
 											<div class="form-group">
-												<input class="form-control" type="text" name="team1" value="{{$tstep->team1}}" />
+
+												
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													  <input class="form-check-input" type="radio" name="team1w" id="team1w" value="0" @if($tstep->team1w == 0) checked @endif > เสมอ
+													  <span class="circle">
+														  <span class="check"></span>
+													  </span>
+													</label>
+												  </div>
+												  <div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													  <input class="form-check-input" type="radio" name="team1w" id="team1w" value="1" @if($tstep->team1w == 1) checked @endif > ต่อ
+													  <span class="circle">
+														  <span class="check"></span>
+													  </span>
+													</label>
+												  </div>
+												  <div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													  <input class="form-check-input" type="radio" name="team1w" id="team1w" value="2" @if($tstep->team1w == 2) checked @endif > รอง
+													  <span class="circle">
+														  <span class="check"></span>
+													  </span>
+													</label>
+												  </div>
+
+
+												<input class="form-control" type="text" name="team1" value="{{$tstep->team1}}" />									
 											</div>
 											<div class="form-group">
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team2w" id="team2w" value="0" @if($tstep->team2w == 0) checked @endif > เสมอ
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team2w" id="team2w" value="1" @if($tstep->team2w == 1) checked @endif > ต่อ
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team2w" id="team2w" value="2" @if($tstep->team2w == 2) checked @endif > รอง
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>
+
 												<input class="form-control" type="text" name="team2" value="{{$tstep->team2}}" />
+
 											</div>
 											<div class="form-group">
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team3w" id="team3w" value="0" @if($tstep->team3w == 0) checked @endif > เสมอ
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team3w" id="team3w" value="1" @if($tstep->team3w == 1) checked @endif > ต่อ
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>
+												<div class="form-check form-check-radio form-check-inline">
+													<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="team3w" id="team3w" value="2" @if($tstep->team3w == 2) checked @endif > รอง
+													<span class="circle">
+														<span class="check"></span>
+													</span>
+													</label>
+												</div>	
 												<input class="form-control" type="text" name="team3" value="{{$tstep->team3}}" />
 											</div>
                                             <input type="hidden" name="_method" value="PUT">

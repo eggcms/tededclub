@@ -8,22 +8,16 @@ Route::get('/vview/{id}', 'FrontController@vview');
 Route::get('/tdstep', 'FrontController@fullpage');
 Route::get('/tdstep2', 'FrontController@fullpage2');
 Route::post('/line-notify', 'FrontController@lineNotify');
+Route::get('/live', 'FrontController@liveball');
 
-Route::get('/live', function () {
-    return view('pages.user.live');
-});
-
-// Route::get('/review', function () {
-//     return view('pages.user.review');
+// Route::get('/live', function () {
+//     return view('pages.user.live');
 // });
+
 
 Route::get('/tded', function () {
     return view('pages.user.tded');
 });
-
-// Route::get('/vicrow', function () {
-//     return view('pages.user.vicrow');
-// });
 
 Route::get('/step', function () {
     return view('pages.user.step');
@@ -34,8 +28,6 @@ Route::get('/admin', function () {
 });
 
 Auth::routes();
-
-
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
@@ -72,10 +64,7 @@ Route::get('/zuser', function () {
 });
 Route::resource('tstep', 'TstepController', ['except' => ['show']]);
 Route::group(['middleware' => ['admin']], function(){
-
-//    Route::get('test', function (){ return view('blogs.test');});
     Route::resource('ztstep', 'ZeanTstepContrller', ['except' => ['show']]);
-//    Route::resource('tstep', 'TstepController', ['except' => ['show']]);
     Route::resource('blogs', 'BlogController', ['except' => ['show']]);
     Route::resource('youtube', 'YoutubeController', ['except' => ['show']]);
     Route::resource('analyze', 'AnalyzeController', ['except' => ['show']]);
