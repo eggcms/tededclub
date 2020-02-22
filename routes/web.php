@@ -14,13 +14,10 @@ Route::get('/live', 'FrontController@liveball');
 //     return view('pages.user.live');
 // });
 
-Route::get('/tester', function () {
+
+Route::get('/tded', function () {
     return view('pages.user.tded');
 });
-
-// Route::get('/tded', function () {
-//     return view('pages.user.tded');
-// });
 
 Route::get('/step', function () {
     return view('pages.user.step');
