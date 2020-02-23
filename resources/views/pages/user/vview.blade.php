@@ -25,7 +25,7 @@
                 <h3>{{$ans->title}}</h3>
                 <p><i class="fas fa-home"></i><a href="{{url('/')}}"> <span>หน้าแรก</span></a> <i class="fas fa-angle-right"></i> <span>{{$ans->title}}</span></p>
                 <div>
-                    <img src="{{url('imgs/'.$ans->image)}}" class="img-fluid" />
+                    <img src="{{serv_url('imgs/'.$ans->image)}}" class="img-fluid" />
                     <div class="py-3">
                         {!!$ans->content!!}
                     </div>

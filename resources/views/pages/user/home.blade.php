@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-@if($meta_title)
+ @if($meta_title)
     {{ $meta_title }}
 @else
     ทีเด็ดคลับดอทคอม ศูนย์รวมทีเด็ดบอลสเต็ป โดยบรรดากูรู ระดับเซียนในวงการลูกหนัง
@@ -13,7 +13,7 @@
     {{ $meta_description }}
 @else
     ทีเด็ดคลับดอทคอม ศูนย์รวมทีเด็ดบอลสเต็ป ข้อมูลบอลจากลีกดังทั่วโลก โดยมุ่งเน้นข้อมูลที่ถูกต้อง ฉับไวเที่ยงตรง โดยบรรดากูรู ระดับเซียนในวงการลูกหนัง
-@endif
+@endif 
 @endsection
 
 @section('content')
@@ -87,10 +87,11 @@
 
 {{-- <หน้าคอนเท้> --}}
         <div class="row py-4">
-            <div class="col-lg-8 mb-4 mb-lg-0">
+            @if(isset($last_news))
+             <div class="col-lg-8 mb-4 mb-lg-0">
                 <a href="{{url('/news/'.$last_news->id)}}" class="imageMain">
                     <section>
-                        <img class="img-fluid" src="{{url('imgs/'.$last_news->image)}}" alt="">
+                        <img class="img-fluid" src="{{serv_url('/imgs/'.$last_news->image)}}" alt="">
                     </section>
                     <div class="content">
                         <h5 class="px-3">{{$last_news->title}}</h5>
@@ -98,11 +99,12 @@
                     </div>
                 </a>
             </div>
+            @endif
             <div class="col-lg-4">
                 @foreach($news as $n)
                 <a href="{{url('/news/'.$n->id)}}" class="row mb-2 homeListnews">
                     <div class="col-4 px-lg-0">
-                        <div class="imageContent"><img class="img" src="{{url('imgs/'.$n->image)}}" alt=""></div>
+                        <div class="imageContent"><img class="img" src="{{serv_url('imgs/'.$n->image)}}" alt=""></div>
                     </div>
                     <div class="col-8 pl-0">
                         <div class="content">
@@ -112,7 +114,7 @@
                     </div>
                 </a>
                 @endforeach
-            </div>
+            </div> 
         </div>
     </div>
 </div>
@@ -123,13 +125,13 @@
 <div id="youtube">
     <div class="container bg-black pb-2">
         <div class="row">
-            @foreach($youtubes as $yt)
+             @foreach($youtubes as $yt)
             <div class="col-xs-12 col-lg-6 pr-3">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="{{$yt->clip}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            @endforeach
+            @endforeach 
         </div>
     </div>
 </div>
@@ -170,14 +172,15 @@
        <div class="row">
             <div class="col-12 pb-2">
                 <div class="row">
-                    @foreach($analyzes as $an)
+
+                     @foreach($analyzes as $an)
                     <div class="col-12 col-lg-4">
                         <a href="{{url('/vview/'.$an->id)}}">
-                            <div class="img-zoom"><img src="{{url('imgs/'.$an->image)}}" class="img-fluid" alt=""></div>
+                            <div class="img-zoom"><img src="{{serv_url('imgs/'.$an->image)}}" class="img-fluid" alt=""></div>
                             <p>{{$an->title}}</p>
                         </a>
                     </div>
-                    @endforeach
+                    @endforeach 
                 </div>
             </div>
         </div>
@@ -206,18 +209,19 @@
     <div class="container bg-black">
         <div class="row">
 
-            @foreach($tstepsx as $ts)
+             @foreach($tstepsx as $ts)
             <div class="col-12 col-lg-3 py-2">
                 <div class="img-tded">
                     @if($ts['avatar'] != '')
                         @if($ts['line'] != '')
-                            <a href="$ts['line']"><img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid"></a>
+                            {{-- <a href="$ts['line']"><img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid"></a> --}}
+                            <img src="{{url('/images/zean.gif')}}" class="img-fluid">
                         @else
-                            <img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid">
+                            <img src="{{url('/images/zean.gif')}}" class="img-fluid">
+                            {{-- <img src="{{url('/avatar/'.$ts['avatar'])}}" class="img-fluid"> --}}
                         @endif
-
                     @else
-                        <img src="/images/balltor12.gif" class="img-fluid">
+                        <img src="{{url('/images/zean.gif')}}" class="img-fluid">
                     @endif
                 </div>
                 <div class="tdedstep">
@@ -245,14 +249,14 @@
                     </div>
                 </div>
             </div>
-            @endforeach 
+            @endforeach  
         </div>
     </div>
 </div>
 {{-- <ทีเด็ดเซียน> --}}
 
 {{-- { แถบบอล api } --}}
-<div id="api-ball">
+{{-- <div id="api-ball">
     <div class="container bg-black">
         <div class="row">
             <div class="col-12">
@@ -272,7 +276,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 {{-- { แถบบอล api } --}}
 
 
@@ -280,7 +284,7 @@
 <div class="api">
     <div class="container bg-black">
         <div class="row">
-            <div class="col-12 pb-2">{{ballstep($objs)}}</div>
+             <div class="col-12 pb-2">{{ballstep($objs)}}</div> 
         </div>
     </div>
 </div>

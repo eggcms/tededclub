@@ -30,7 +30,7 @@
                     <div class="col-12 col-lg-4  pb-2">
                         <div class="all-cat">
                             <a href="{{url('/news/'.$news->id)}}">
-                                <img src="{{url('imgs/'.$news->image)}}" alt="Snow" style="width:100%" >
+                                <img src="{{serv_url('imgs/'.$news->image)}}" alt="Snow" style="width:100%" >
                                 <p>{{$news->title}}</p>
                             </a>
                             <span><i class="far fa-clock"></i> {{ thaiDate(date('d-m-Y H:i',strtotime($news->created_at)),'a') }} <i class="far fa-eye"></i> 

@@ -14,6 +14,7 @@ class FrontController extends Controller
 		$news = new Blog;
 		$last_news = $news->orderBy('id','desc')->first();
 		$news = $news->orderBy('id','desc')->where('id','!=',$news->pluck('id')->last())->take(4)->get();
+
 		$anas = new Analyze;
 		$analyzes = $anas->orderBy('id','desc')->take(6)->get();
 
@@ -22,10 +23,11 @@ class FrontController extends Controller
 
 		$json = file_get_contents('https://zeanza.com/mm88fa-api/vision_data/api.php?met=hdp&APIkey=S09ZWFArak1BZTNpcUZGNTA2YWVia2tjU0F0bUVyazNZdjJVSGpZWXJMcDlrWHFYRGNnYlRjTWphaFg1RUVVWGh6WjNsUDZ6WUJKeDlCYUFRZzdrenc9PTo6G5mkISD1Nfndtt7QHBsBSA==');
 		$objs = json_decode($json);
+
 		$you = new Youtube;
 		$yous = $you->orderBy('id','desc')->take(2)->get();
-		$max_tstep=$tstepsx->count();
 
+		$max_tstep=$tstepsx->count();
         $dataxSet = [];
         if ($max_tstep > 0) {
 			foreach($tstepsx as $ttsx) {
@@ -72,7 +74,6 @@ class FrontController extends Controller
 			'last_news'=>$last_news,
 			'news'=>$news,
 			'analyzes'=>$analyzes,
-//			'tsteps'=>$dataSet,
 			'objs'=>$objs,
             'youtubes'=>$yous,
             'tstepsx'=>$dataxSet

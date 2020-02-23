@@ -29,7 +29,7 @@
                     <div class="col-12 col-lg-4  pb-2">
                         <div class="all-cat">
                             <a href="{{url('vview/'.$ans->id)}}">
-                                <img src="{{url('imgs/'.$ans->image)}}" alt="Snow" style="width:100%">
+                                <img src="{{serv_url('imgs/'.$ans->image)}}" alt="Snow" style="width:100%">
                                 <p>{{$ans->title}}</p>
                             </a>
                             <span><i class="far fa-clock"></i> {{ thaiDate(date('d-m-Y H:i',strtotime($ans->created_at)),'a') }} <i class="far fa-eye"></i> 
